@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Lenovo IdeaPad 3",
+    "id": "1",
+    "category": "laptops",
+    "image": "/products/1.png"
+  },
+  {
+    "name": "Apple MacBook Air 13",
+    "id": "2",
+    "category": "laptops",
+    "image": "/products/2.png"
+  },
+  {
+    "name": "Apple MacBook Pro 16 ",
+    "id": "3",
+    "category": "laptops",
+    "image": "/products/3.png"
+  },
+  {
+    "name": "iPhone 13 Pro Max 128GB",
+    "id": "4",
+    "category": "phones",
+    "image": "/products/4.png"
+  },
+  {
+    "name": "iPhone SE 64GB",
+    "id": "5",
+    "category": "phones",
+    "image": "/products/5.png"
+  }
+]

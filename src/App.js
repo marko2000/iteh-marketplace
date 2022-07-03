@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Suspense } from 'react';
+import Loading from './components/Loading';
+import Catalog from './pages/catalog';
+import Cart from './pages/cart';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Router>
+        <Suspense fallback={<Loading cover="content" />}>
+            <Routes>
+            <Route path='/catalog' element={<Catalog />} />
+            <Route path='/cart' element={<Cart />} />
+            </Routes>
+        </Suspense>
+     </Router>
     </div>
   );
 }
