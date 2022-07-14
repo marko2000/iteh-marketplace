@@ -1,7 +1,7 @@
 import HeaderNav from "../components/HeaderNav";
 import { Link } from "react-router-dom";
 import { Layout, Button } from "antd";
-import { Table, TableCell, TableRow } from "@mui/material";
+import { Table, TableCell, TableRow, Card } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const {Header, Content} = Layout;
@@ -10,12 +10,18 @@ const Cart = () => {
     const [cartItems, setCartItems] = useState(
         JSON.parse(localStorage.getItem("cartItems"))
     )
+    const [submit, setSubmit] = useState(0)
 
     const removeItem = productId => {
         let cartItems1 = JSON.parse(localStorage.getItem("cartItems"))
         cartItems1 = cartItems1.filter(product => product.id !== productId)
         localStorage.setItem("cartItems", JSON.stringify(cartItems1))
         setCartItems(cartItems1)
+    }
+
+    const handleSubmit = () => {
+      localStorage.clear()
+      setSubmit(1)
     }
 
     useEffect(() => {}, [cartItems])
@@ -25,6 +31,7 @@ const Cart = () => {
       <Header>
         <HeaderNav />
       </Header>
+      {submit === 0 ? (
       <Content
         style={{
           display: 'flex',
@@ -76,6 +83,7 @@ const Cart = () => {
                 </TableRow>
               ))}
             </Table>
+              <Button style={{margin: '5%'}} onClick={handleSubmit} size="large">Checkout</Button>
           </>
         ) : (
           <>
@@ -85,7 +93,31 @@ const Cart = () => {
             </Link>
           </>
         )}
+      </Content> ) : (
+        <Content>
+        <Card
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            margin: '10%',
+            backgroundColor: '#18ce00'
+          }}
+        >
+          <span style={{ marginTop: '5%', fontSize: '2rem', color: '#000' }}>
+            Items successfully ordered!
+          </span>
+          <Link to="/catalog">
+            <Button
+              size="large"
+              color="secondary"
+              style={{ margin: '4% 2%', fontSize: '1.1rem' }}
+            >
+              Back to catalog
+            </Button>
+          </Link>
+        </Card>
       </Content>
+      )}
     </Layout>
     )
 }
