@@ -1,7 +1,7 @@
 import HeaderNav from "../components/HeaderNav";
 import { Link } from "react-router-dom";
 import { Layout, Button } from "antd";
-import { Table, TableCell, TableRow, Card } from "@mui/material";
+import { Table, TableCell, TableRow, Card, TableHead } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const {Header, Content} = Layout;
@@ -44,28 +44,18 @@ const Cart = () => {
         {cartItems && cartItems.length !== 0 ? (
           <>
             <Table
-              columns={[
-                {
-                  cellContent: 'SKU',
-                  id: 'productId'
-                },
-                {
-                  cellContent: 'Name',
-                  id: 'productName'
-                },
-                {
-                  cellContent: 'Category',
-                  id: 'category'
-                },
-                {
-                  cellContent: 'Remove',
-                  id: 'remove'
-                }
-              ]}
               style={{
                 width: '50%'
               }}
             >
+              <TableHead>
+                <TableRow>
+                  <TableCell>SKU</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Category</TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+              </TableHead>
               {cartItems.map(product => (
                 <TableRow>
                   <TableCell>{product.id}</TableCell>
